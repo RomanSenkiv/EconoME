@@ -1,26 +1,25 @@
-<div class="drop-file-zone">
-    <div class="background" id="b1"></div>
-    <div class="background" id="b2"></div>
-    <div class="background" id="b3"></div>
-    <div class="upload-file-zone"
-        [ngClass]="{ 'drag-over': isDraggingOver }"
-        (dragover)="onDragOver($event)"
-        (dragleave)="onDragLeave($event)"
-        (drop)="onFileDrop($event)">
-
-        <div class="upload-type-container">
-            <div class="upload-type" id="t1">FILE</div>
-            <div class="upload-type" id="t2">URL</div>
-            <div class="upload-type" id="t3">SEARCH</div>
-            <span class="line"></span>
+<div class="container">
+    <div class="drop-file-zone">
+        <div class="background" id="b1"></div>
+        <div class="background" id="b2"></div>
+        <div class="background" id="b3"></div>
+        <div class="upload-file-zone"
+            [ngClass]="{ 'drag-over': isDraggingOver }"
+            (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave($event)"
+            (drop)="onFileDrop($event)">
+    
+            <div class="upload-type-container">
+                <p>EconoMe</p>
+            </div>
+    
+            <img src="../../assets/upload_file.png" alt="upload" class="upload-file">
+            <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".csv" style="display: none;">
+            <div class="drop-here-text" *ngIf="isDraggingOver">Drop here</div>
+            <button class="choose-button" (click)="triggerFileInput()">
+                <p>Choose file</p>
+            </button>
         </div>
-
-        <img src="../../assets/upload_file.png" alt="upload" class="upload-file">
-        <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".csv" style="display: none;">
-        <div class="drop-here-text" *ngIf="isDraggingOver">Drop here</div>
-        <button class="choose-button" (click)="triggerFileInput()">
-            <p>Choose file</p>
-        </button>
     </div>
+    <app-statistics></app-statistics>
 </div>
-<app-statistics></app-statistics>

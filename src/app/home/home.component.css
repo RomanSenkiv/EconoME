@@ -1,9 +1,9 @@
-.line {
-  width: 600px;
-  height: 1px;
-  margin-top: 32px;
-  position: absolute;
-  background: #fff;
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+.container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
 }
 
 .drop-file-zone {
@@ -15,24 +15,24 @@
 #b1,
 #b2,
 #b3 {
-  width: 100%;
+  width: 430px;
   height: 400px;
   position: absolute;
-  background: #FF477E;
+  background: #034732;
   border-radius: 0 0 50px 50px;
   z-index: 1;
 }
 
 #b2 {
   height: 425px;
-  background: rgba(255, 71, 126, 0.7);
+  background: rgba(3, 71, 50, 0.7);
   border-radius: 0 0 40px 40px;
   z-index: 0;
 }
 
 #b3 {
   height: 450px;
-  background: rgba(255, 71, 126, 0.5);
+  background: rgba(3, 71, 50, 0.5);
   border-radius: 0 0 30px 30px;
   z-index: -1;
 }
@@ -48,7 +48,7 @@
 }
 
 .upload-file-zone.drag-over {
-  background: rgba(250, 224, 228, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   border: 4px dashed white;
   border-radius: 50px;
 }
@@ -70,9 +70,12 @@
 .upload-type-container {
   width: 100%;
   height: 50px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
+  text-align: center;
+  font-family: "Lilita One", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 64px;
+  color: white;
 }
 
 .upload-type {
