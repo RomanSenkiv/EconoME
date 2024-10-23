@@ -3,7 +3,6 @@
 .container {
   width: 100%;
   height: 100%;
-  border: 1px solid red;
 }
 
 .drop-file-zone {
@@ -15,7 +14,7 @@
 #b1,
 #b2,
 #b3 {
-  width: 430px;
+  width: 100%;
   height: 400px;
   position: absolute;
   background: #034732;
@@ -38,7 +37,7 @@
 }
 
 .upload-file-zone {
-  width: 600px;
+  width: 100%;
   height: 350px;
   position: absolute;
   top: 45%;

@@ -23,6 +23,7 @@ export class HomeComponent {
 
   // Подія, коли файл виходить з області перетягування
   onDragLeave(event: DragEvent): void {
+    event.preventDefault();
     this.isDraggingOver = false;
   }
 
@@ -58,6 +59,6 @@ export class HomeComponent {
 
   handleFileUpload(file: File): void {
     console.log('File uploaded: ', file.name);
-    this.csvParserService.parsedFile(file);
+    this.csvParserService.parseCsvFile(file);
   }
 }
