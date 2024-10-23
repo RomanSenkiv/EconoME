@@ -1,16 +1,20 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { NgFor, CommonModule } from '@angular/common';
 import { CsvParserService } from '../../../services/CSVParserService';
 import { ChartBuilderService } from '../../../services/ChartBuilderService';
 
 @Component({
   selector: 'app-statistics',
   standalone: true,
+  imports: [NgFor, CommonModule],
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit {
   @ViewChild('myChart') myChart!: ElementRef<HTMLCanvasElement>;
   @ViewChild('expensesChart') expensesChart!: ElementRef<HTMLCanvasElement>;
+
+  transactions: any[] = []; // Змінна для збереження транзакцій
 
   constructor(
     private csvParserService: CsvParserService,
@@ -27,6 +31,10 @@ export class StatisticsComponent implements OnInit {
         // Графік витрат за категоріями
         const expensesByCategory = this.csvParserService.calculateExpensesByCategoryForCurrentMonth(parsedData);
         this.createExpensesCategoryChart(expensesByCategory);
+
+        // Отримуємо транзакції за поточний місяць
+        this.transactions = this.csvParserService.calculateTransactionsForCurrentMonth(parsedData);
+        console.log('Transactions for current month:', this.transactions); // Перевіряємо, чи отримані транзакції
       }
     });
   }

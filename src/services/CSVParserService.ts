@@ -114,6 +114,21 @@ export class CsvParserService {
     }));
   }
 
+  calculateTransactionsForCurrentMonth(data: any[]): any[] {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth(); // Поточний місяць (0-11)
+    const currentYear = currentDate.getFullYear(); // Поточний рік
+  
+    return data.filter(item => {
+      // Парсимо дату транзакції, враховуючи формат "дд.мм.рррр гг:хх:сс"
+      const dateParts = item["Date and time"].split(' ')[0].split('.');
+      const transactionDate = new Date(+dateParts[2], +dateParts[1] - 1, +dateParts[0]);
+  
+      // Фільтруємо лише транзакції за поточний місяць і рік
+      return transactionDate.getMonth() === currentMonth && transactionDate.getFullYear() === currentYear;
+    });
+  }  
+
   getParsedData(): Observable<any[]> {
     return this.parsedData$;
   }

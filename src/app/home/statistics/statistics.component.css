@@ -1,57 +1,86 @@
 .container {
-    width: 100%;
-    height: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .line {
-    width: 300px;
-    height: 2px;
-    background: white;
-    position: absolute;
-    margin-top: 65px;
-    margin-left: 50px;
+  width: 300px;
+  height: 2px;
+  background: white;
+  position: absolute;
+  margin-top: 65px;
+  margin-left: 50px;
 }
 
 .statistic {
-    width: 400px;
-    height: 450px;
-    background: rgba(3, 71, 50, 0.4);
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center;
+  width: 400px;
+  height: 450px;
+  background: rgba(3, 71, 50, 0.4);
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.statistic p {
+  margin-top: 20px;
+}
+
+#s1 {
+  border-radius: 50px 50px 0 0;
+}
+
+#s3 {
+  border-radius: 0 0 50px 50px;
+}
+
+.chart,
+.transactions {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.transactions {
+    font-size: 10px;
     display: flex;
     flex-direction: column;
 }
 
-.statistic p {
-    margin-top: 20px;
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
 }
 
-#s1 {
-    border-radius: 50px 50px 0 0;
+.transaction-date,
+.transaction-description,
+.transaction-amount {
+    flex: 1;
+    text-align: left;
 }
 
-#s3 {
-    border-radius: 0 0 50px 50px;
+.transaction-description {
+    margin-left: 20px;
 }
 
-.chart {
-    width: 300px;
-    height: 300px;
-    position: absolute;
-    margin-top: 100px;
-    margin-left: 50px;
+.income {
+    color: green;
 }
 
-.canvas {
-    width: 300px;
-    height: 300px;
+.expense {
+    color: red;
 }

@@ -16,8 +16,15 @@
     <div class="statistic" id="s3">
         <p>List of expenses</p>
         <span class="line"></span>
-        <div class="chart">
-
-        </div>
+        <div class="transactions">
+            <div *ngFor="let transaction of transactions" class="transaction-item">
+                <!-- <span class="transaction-date">{{ transaction["Date and time"] | date: 'dd.MM' }}</span> -->
+                <span class="transaction-description">{{ transaction.Description }}</span>
+                <span class="transaction-amount" 
+                      [ngClass]="{'income': transaction['Card currency amount, (UAH)'] > 0, 'expense': transaction['Card currency amount, (UAH)'] < 0}">
+                    {{ transaction['Card currency amount, (UAH)'] | number:'1.2-2' }} UAH
+                </span>
+            </div>
+        </div>          
     </div>
 </div>
