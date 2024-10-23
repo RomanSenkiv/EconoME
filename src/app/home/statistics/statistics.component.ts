@@ -10,6 +10,7 @@ import { ChartBuilderService } from '../../../services/ChartBuilderService';
 })
 export class StatisticsComponent implements OnInit {
   @ViewChild('myChart') myChart!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('expensesChart') expensesChart!: ElementRef<HTMLCanvasElement>;
 
   constructor(
     private csvParserService: CsvParserService,
@@ -19,15 +20,23 @@ export class StatisticsComponent implements OnInit {
   ngOnInit(): void {
     this.csvParserService.getParsedData().subscribe((parsedData) => {
       if (parsedData.length > 0) {
+        // Графік прибутків і витрат
         const { income, expenses } = this.csvParserService.calculateIncomeAndExpensesForCurrentMonth(parsedData);
-        this.createChart(income, expenses);
+        this.createIncomeExpenseChart(income, expenses);
+
+        // Графік витрат за категоріями
+        const expensesByCategory = this.csvParserService.calculateExpensesByCategoryForCurrentMonth(parsedData);
+        this.createExpensesCategoryChart(expensesByCategory);
       }
     });
   }
 
-  createChart(income: number, expenses: number): void {
+  createIncomeExpenseChart(income: number, expenses: number): void {
     this.chartBuilderService.createIncomeExpenseChart(this.myChart.nativeElement, income, expenses);
   }
-  
+
+  createExpensesCategoryChart(expensesByCategory: { category: string; amount: number }[]): void {
+    this.chartBuilderService.createExpenseCategoryPieChart(this.expensesChart.nativeElement, expensesByCategory);
+  }
 }
 
