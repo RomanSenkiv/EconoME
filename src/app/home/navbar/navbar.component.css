@@ -4,7 +4,7 @@
     align-items: center;
     margin: 0 auto;
     text-align: center;
-    background-color: rgba(3, 71, 50, 0.7);
+    background-color: rgba(3, 71, 50, 1);
     padding: 20px;
     border-top-right-radius: 40px;
     border-top-left-radius: 40px;
@@ -30,5 +30,5 @@
 
 .listItem {
     color: white;
-    
+
 }
