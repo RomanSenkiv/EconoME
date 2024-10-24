@@ -73,9 +73,14 @@
 }
 
 .transactions {
-    font-size: 10px;
-    display: flex;
-    flex-direction: column;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.transactions::-webkit-scrollbar {
+  width: 0;
 }
 
 .transaction-item {
