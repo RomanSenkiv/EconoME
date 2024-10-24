@@ -8,11 +8,11 @@ import { CsvParserService } from '../../services/CSVParserService';
   standalone: true,
   imports: [NgClass, NgIf, StatisticsComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
   isDraggingOver: boolean = false;
-
+  public imageUrl: string = '../../../public/uploadFile.png';
   constructor(private csvParserService: CsvParserService) { }
 
   // Подія, коли файл перетягують в область
