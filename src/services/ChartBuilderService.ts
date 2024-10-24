@@ -17,9 +17,9 @@ export class ChartBuilderService {
       new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['Прибуток', 'Витрати'],
+          labels: ['Income', 'Expenses'],
           datasets: [{
-            label: 'Сума (UAH)',
+            label: 'Total (UAH)',
             data: [income, expenses],
             backgroundColor: [
               'rgba(75, 192, 192, 0.6)', // Зелений для прибутку
@@ -54,7 +54,7 @@ export class ChartBuilderService {
             },
             title: {
               display: true,
-              text: 'Прибуток і Витрати за поточний місяць',
+              // text: 'Прибуток і Витрати за поточний місяць',
               color: 'white' // Колір заголовку
             }
           }
@@ -76,7 +76,7 @@ export class ChartBuilderService {
         data: {
           labels: labels, // Категорії
           datasets: [{
-            label: 'Витрати по категоріях (UAH)',
+            label: 'Expenses by category (UAH)',
             data: data, // Суми витрат по категоріях
             backgroundColor: [
               'rgba(255, 99, 132, 0.6)', // Різні кольори для кожної категорії
@@ -108,7 +108,7 @@ export class ChartBuilderService {
             },
             title: {
               display: true,
-              text: 'Розподіл витрат по категоріях',
+              // text: 'Розподіл витрат по категоріях',
               color: 'white' // Колір заголовку
             }
           }

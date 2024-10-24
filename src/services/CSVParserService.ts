@@ -37,14 +37,14 @@ export class CsvParserService {
 
   // Об'єкт для визначення категорій за MCC кодами
   private mccCategoryMap: { [key: string]: string } = {
-    '5411': 'Продукти',
-    '5812': 'Ресторани', 
-    '4111': 'Транспорт', 
-    '5732': 'Електроніка', 
-    '5912': 'Аптеки',
-    '4829': 'Переказ на карту',
-    '5651': 'Одяг і взуття',
-    '5943': 'Канцелярські товари',
+    '5411': 'Products',
+    '5812': 'Restaurants', 
+    '4111': 'Transport', 
+    '5732': 'Electronics', 
+    '5912': 'Pharmacies',
+    '4829': 'Transfer to the card',
+    '5651': 'Clothes and shoes',
+    '5943': 'Office supplies',
   };
 
   // Метод для фільтрації даних за поточний місяць і підрахунку доходів та витрат
@@ -96,7 +96,7 @@ export class CsvParserService {
 
       // Фільтруємо за поточний місяць і рік, та обробляємо лише витрати
       if (transactionDate.getMonth() === currentMonth && transactionDate.getFullYear() === currentYear && amount < 0) {
-        const category = this.mccCategoryMap[mccCode] || 'Інші витрати'; // Зіставляємо MCC код з категорією
+        const category = this.mccCategoryMap[mccCode] || 'Other expenses'; // Зіставляємо MCC код з категорією
 
         // Додаємо суми до категорій
         if (categoryMap[category]) {

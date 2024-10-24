@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { NgFor, CommonModule } from '@angular/common';
 import { CsvParserService } from '../../../services/CSVParserService';
 import { ChartBuilderService } from '../../../services/ChartBuilderService';
@@ -10,20 +10,25 @@ import { ChartBuilderService } from '../../../services/ChartBuilderService';
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.css']
 })
-export class StatisticsComponent implements OnInit {
+export class StatisticsComponent implements OnInit, AfterViewInit {
   @ViewChild('myChart') myChart!: ElementRef<HTMLCanvasElement>;
   @ViewChild('expensesChart') expensesChart!: ElementRef<HTMLCanvasElement>;
 
   transactions: any[] = []; // Змінна для збереження транзакцій
+  isFileUploaded = false;
 
   constructor(
     private csvParserService: CsvParserService,
-    private chartBuilderService: ChartBuilderService
+    private chartBuilderService: ChartBuilderService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
     this.csvParserService.getParsedData().subscribe((parsedData) => {
       if (parsedData.length > 0) {
+        this.isFileUploaded = true;
+        this.cdr.detectChanges();
+        
         // Графік прибутків і витрат
         const { income, expenses } = this.csvParserService.calculateIncomeAndExpensesForCurrentMonth(parsedData);
         this.createIncomeExpenseChart(income, expenses);
@@ -37,6 +42,14 @@ export class StatisticsComponent implements OnInit {
         console.log('Transactions for current month:', this.transactions); // Перевіряємо, чи отримані транзакції
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    // // Використовується лише при першому завантаженні файлу
+    // if (this.isFileUploaded) {
+    //   this.createIncomeExpenseChart(0, 0);
+    //   this.createExpensesCategoryChart([]);
+    // }
   }
 
   createIncomeExpenseChart(income: number, expenses: number): void {

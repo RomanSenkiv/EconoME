@@ -43,6 +43,17 @@
   border-radius: 0 0 50px 50px;
 }
 
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .chart,
 .transactions {
   width: 300px;
@@ -50,6 +61,15 @@
   position: absolute;
   margin-top: 100px;
   margin-left: 50px;
+}
+
+.chart {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.chart.show {
+  opacity: 1;
 }
 
 .transactions {
