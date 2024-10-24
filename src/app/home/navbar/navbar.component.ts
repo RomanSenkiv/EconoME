@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   protected ImagePath: string;
   constructor() {
-    this.ImagePath = '/public/schedule.png'
+    this.ImagePath = 'public/schedule.svg'
     
   }
   
