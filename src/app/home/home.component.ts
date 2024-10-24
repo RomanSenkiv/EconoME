@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { CsvParserService } from '../../services/CSVParserService';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgClass, NgIf, StatisticsComponent],
+  imports: [NgClass, NgIf, StatisticsComponent, NavbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

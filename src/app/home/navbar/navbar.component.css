@@ -1,0 +1,29 @@
+.FooterNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgba(3, 71, 50, 0.7);
+    padding: 20px;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+    position: fixed;
+    bottom: 0;
+    right: 0.1;
+}
+
+.nav {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.navList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0 auto;
+    text-align: center;
+    gap: 25px;
+}
