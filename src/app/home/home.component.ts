@@ -1,20 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { CsvParserService } from '../../services/CSVParserService';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgClass, NgIf, StatisticsComponent],
+  imports: [NgClass, NgIf, StatisticsComponent, NavbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   isDraggingOver: boolean = false;
+  @ViewChild('plotContainer') plotContainer!: ElementRef;
   public imageUrl: string = '../../../public/uploadFile.png';
   constructor(private csvParserService: CsvParserService) { }
-
+  ngAfterViewInit(): void {
+    this.scrollToPlots();
+  }
+  scrollToPlots(){
+    this.plotContainer.nativeElement.scrollIntoView({behavior: 'smooth'});
+  }
   // Подія, коли файл перетягують в область
   onDragOver(event: DragEvent): void {
     event.preventDefault();
