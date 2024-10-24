@@ -1,13 +1,13 @@
 <div id="statistics" class="container">
     <div class="statistic fade-in" [ngClass]="{ 'show': isFileUploaded }" id="s1">
-        <p>Profit & Loss schedule</p>
+        <p>Profit & Loss, Oct 2024</p>
         <span class="line"></span>
         <div class="chart" [ngClass]="{ 'show': isFileUploaded }">
             <canvas #myChart style="width: 100%; height: 300px;"></canvas>
         </div>
     </div>
     <div class="statistic fade-in" [ngClass]="{ 'show': isFileUploaded }" id="s2">
-        <p>Expenses</p>
+        <p>Expenses Categorization</p>
         <span class="line"></span>
         <div class="chart" [ngClass]="{ 'show': isFileUploaded }">
             <canvas #expensesChart style="width: 100%; height: 300px;"></canvas>

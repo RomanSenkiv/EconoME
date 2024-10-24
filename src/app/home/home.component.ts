@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, ViewChild, } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { CsvParserService } from '../../services/CSVParserService';
@@ -11,17 +11,14 @@ import { NavbarComponent } from './navbar/navbar.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent {
   isDraggingOver: boolean = false;
-  @ViewChild('plotContainer') plotContainer!: ElementRef;
-  public imageUrl: string = '../../../public/uploadFile.png';
+  
+  // Додаємо ViewChild для компонента app-statistics
+  @ViewChild('statistics', { static: false }) statisticsSection!: ElementRef;
+
   constructor(private csvParserService: CsvParserService) { }
-  ngAfterViewInit(): void {
-    this.scrollToPlots();
-  }
-  scrollToPlots(){
-    this.plotContainer.nativeElement.scrollIntoView({behavior: 'smooth'});
-  }
+
   // Подія, коли файл перетягують в область
   onDragOver(event: DragEvent): void {
     event.preventDefault();
@@ -39,12 +36,12 @@ export class HomeComponent implements AfterViewInit {
     event.preventDefault();
     this.isDraggingOver = false;
 
-    if(event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length > 0) {
+    if (event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length > 0) {
       const file = event.dataTransfer.files[0];
       console.log('Dropped file: ', file);
       this.handleFileUpload(file);
     } else {
-      console.error('No files dropped')
+      console.error('No files dropped');
     }
   }
 
@@ -55,9 +52,9 @@ export class HomeComponent implements AfterViewInit {
     }
   }
 
-  onFileSelected(event: Event) {
+  onFileSelected(event: Event): void {
     const fileInput = event.target as HTMLInputElement;
-    if(fileInput.files && fileInput.files.length > 0) {
+    if (fileInput.files && fileInput.files.length > 0) {
       const file = fileInput.files[0];
       console.log('File selected: ', file);
       this.handleFileUpload(file);
@@ -67,5 +64,23 @@ export class HomeComponent implements AfterViewInit {
   handleFileUpload(file: File): void {
     console.log('File uploaded: ', file.name);
     this.csvParserService.parseCsvFile(file);
+
+    // Після обробки файла викликаємо прокрутку до секції <app-statistics>
+    setTimeout(() => {
+      this.scrollToStatistics();
+    }, 100); // Невелика затримка, щоб переконатися, що елемент готовий для прокрутки
+  }
+
+  // Метод для прокрутки до <app-statistics>
+  scrollToStatistics(): void {
+    const element = document.querySelector('app-statistics');
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      console.log('app-statistics not found in DOM!');
+    }
   }
 }

@@ -19,17 +19,17 @@ export class ChartBuilderService {
         data: {
           labels: ['Income', 'Expenses'],
           datasets: [{
-            label: 'Total (UAH)',
+            label: 'UAH',
             data: [income, expenses],
             backgroundColor: [
-              'rgba(75, 192, 192, 0.6)', // Зелений для прибутку
-              'rgba(255, 99, 132, 0.6)'  // Червоний для витрат
+              'rgba(28, 156, 54, 1)', // Green for income
+              'rgba(201, 22, 55, 1)'  // Red for expenses
             ],
             borderColor: [
-              'rgba(75, 192, 192, 1)',   // Зелений для прибутку
-              'rgba(255, 99, 132, 1)'    // Червоний для витрат
+              'rgba(1, 1, 1, 0.8)',   // Green border for income
+              'rgba(1, 1, 1, 0.8)'    // Red border for expenses
             ],
-            borderWidth: 1
+            borderWidth: 0
           }]
         },
         options: {
@@ -37,25 +37,39 @@ export class ChartBuilderService {
             y: {
               beginAtZero: true,
               ticks: {
-                color: 'white' // Колір шрифту осі Y
+                color: 'white' // Y-axis font color
+              },
+              grid: {
+                color: 'rgba(255, 255, 255, 0.2)', // Light white grid lines with transparency
+                lineWidth: 1
               }
             },
             x: {
               ticks: {
-                color: 'white' // Колір шрифту осі X
+                color: 'white' // X-axis font color
+              },
+              grid: {
+                color: 'rgba(255, 255, 255, 0.2)', // Light white grid lines with transparency
+                lineWidth: 1
               }
+            }
+          },
+          layout: {
+            padding: {
+              left: 10,
+              right: 10,
+              top: 20,
+              bottom: 10
             }
           },
           plugins: {
             legend: {
-              labels: {
-                color: 'white' // Колір шрифту легенди
-              }
+              display: false // Disable the legend
             },
             title: {
               display: true,
-              // text: 'Прибуток і Витрати за поточний місяць',
-              color: 'white' // Колір заголовку
+              text: 'Currency: UAH',
+              color: 'white' // Title font color
             }
           }
         }
@@ -79,13 +93,13 @@ export class ChartBuilderService {
             label: 'Expenses by category (UAH)',
             data: data, // Суми витрат по категоріях
             backgroundColor: [
-              'rgba(255, 99, 132, 0.6)', // Різні кольори для кожної категорії
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
-              'rgba(75, 192, 192, 0.6)',
-              'rgba(153, 102, 255, 0.6)',
-              'rgba(255, 159, 64, 0.6)',
-              'rgba(201, 203, 207, 0.6)'
+              'rgba(255, 99, 132, 0.8)', // Різні кольори для кожної категорії
+              'rgba(54, 162, 235, 0.8)',
+              'rgba(255, 206, 86, 0.8)',
+              'rgba(75, 192, 192, 0.8)',
+              'rgba(153, 102, 255, 0.8)',
+              'rgba(255, 159, 64, 0.8)',
+              'rgba(201, 203, 207, 0.8)'
             ],
             borderColor: [
               'rgba(255, 99, 132, 1)',
@@ -100,6 +114,14 @@ export class ChartBuilderService {
           }]
         },
         options: {
+          layout: {
+            padding: {
+              left: 10,
+              right: 10,
+              top: 20,
+              bottom: 10
+            }
+          },
           plugins: {
             legend: {
               labels: {
